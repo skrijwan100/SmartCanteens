@@ -9,6 +9,7 @@ import Signup from './pages/Signup.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import Createaccount from './pages/Createaccount.jsx';
+import EmailContextProvider from './contexts/emailContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,19 +38,19 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: (
-          <About/>
+          <About />
         )
       },
       {
         path: '/contact',
         element: (
-          <Contact/>
+          <Contact />
         )
       },
       {
         path: '/creataccount',
         element: (
-          <Createaccount/>
+          <Createaccount />
         )
       },
     ]
@@ -59,6 +60,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <EmailContextProvider>
+      <RouterProvider router={router} />
+    </EmailContextProvider>
   </StrictMode>
 )

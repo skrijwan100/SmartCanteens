@@ -7,7 +7,7 @@ const cloudinary = require("../config/cloudinary");
 const fs = require("fs")
 const bcrypt = require('bcrypt')
 const jwt = require("jsonwebtoken");
-const fecthuer= require("../middleware/fecthuser")
+const fecthuer = require("../middleware/fecthuser")
 let otp = null;
 router.post("/sendemail", async (req, res) => {
     try {
@@ -64,7 +64,7 @@ router.post("/register", upload.single("profilepic"), async (req, res) => {
         })
         await newuser.save();
         return res.status(200).json({ "message": "You register done", "status": true })
-       
+
 
     } catch (error) {
         console.log(error)
@@ -78,34 +78,32 @@ router.post("/login", async (req, res) => {
     try {
 
         const { email, password } = req.body;
-        const finduser= await User.findOne({email})
-        if(!finduser){
-            return res.status(404).json({"status":false,"message":"Email or passowrd is wrong"})
+        const finduser = await User.findOne({ email })
+        if (!finduser) {
+            return res.status(404).json({ "status": false, "message": "Email or passowrd is wrong" })
         }
-        const chake_pass= await bcrypt.compare(password,finduser.password)
-        if(!chake_pass){
-            return res.status(400).json({"status":false,"message":"Email or passowrd is wrong"})
+        const chake_pass = await bcrypt.compare(password, finduser.password)
+        if (!chake_pass) {
+            return res.status(400).json({ "status": false, "message": "Email or passowrd is wrong" })
         }
         const authtoken = jwt.sign({
             user: finduser._id
         }, process.env.JWT_SERECT)
-        return res.status(200).json({"status":true,"message":"login Successful","auth-token":authtoken})
+        return res.status(200).json({ "status": true, "message": "login Successful", "auth-token": authtoken })
     } catch (error) {
         console.log(error)
         return res.status(505).json({ "error": "Internal server error" })
     }
 
 })
-router.get("getuser",fecthuer,async(req,res)=>{
+router.get("/getuser", fecthuer, async (req, res) => {
     try {
-        
-   
-    const userid=req.user;
-    const userdata= await User.findById(userid)
-    return res.status(200).json({"message":userdata})
-} catch (error) {
-    console.log(error)
-    return res.status(505).json({ "error": "Internal server error" })
-}
+        const userid = req.user;
+        const userdata = await User.findById(userid)
+        return res.status(200).json({ "message": userdata })
+    } catch (error) {
+        console.log(error)
+        return res.status(505).json({ "error": "Internal server error" })
+    }
 })
 module.exports = router;

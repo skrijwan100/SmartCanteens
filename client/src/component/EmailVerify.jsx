@@ -1,49 +1,60 @@
 import React, { useState } from 'react'
-import { handleSuccess,handleError } from './ErrorMessage'
+import { handleSuccess, handleError } from './ErrorMessage'
 import { useNavigate } from 'react-router'
-
-const EmailVerify = ({checkR}) => {
+import { useEmail } from '../contexts/emailContext'
+const EmailVerify = ({ checkR }) => {
     const [pageShow, setpageShow] = checkR
     const [sendValue, setSendValue] = useState("")
-    const naviget= useNavigate() 
-    const submitEmail = async(e) => {
+    const [loder, setLoder] = useState(false)
+    const naviget = useNavigate();
+    const [emailV, setEmailV] = useEmail()
+    const submitEmail = async (e) => {
         e.preventDefault();
+        setLoder(true)
         console.log(sendValue)
-        const url=`${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/sendemail`
-        const responce= await fetch(url,{
-            method:'POST',
-            headers:{
+       
+        const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/sendemail`
+        const responce = await fetch(url, {
+            method: 'POST',
+            headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify({email:sendValue})
+            body: JSON.stringify({ email: sendValue })
         })
-       const data= await responce.json();
-       if(!data.status){
-         return  handleError("Error to send mail please try again.")
-       }
+        const data = await responce.json();
+        if (!data.status) {
+            setLoder(false)
+            return handleError("Error to send mail please try again.")
+        }
         handleSuccess("OTP send to your email")
         setpageShow(false)
+        setLoder(false)
         setSendValue("")
+        setEmailV(sendValue)
     }
 
-    const submitOtp = async(e) => {
+    const submitOtp = async (e) => {
         e.preventDefault();
         console.log(sendValue)
-        const url=`${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/veryfiyotp`
-        const responce= await fetch(url,{
-            method:'POST',
-            headers:{
-              "Content-Type": "application/json"
+        
+        setLoder(true)
+        const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/veryfiyotp`
+        const responce = await fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify({userotp:sendValue})
+            body: JSON.stringify({ userotp: sendValue })
         })
-        const data=  await responce.json()
-        if(!data.status){
+        const data = await responce.json()
+        if (!data.status) {
             return handleError("OTP has not macthed")
         }
         handleSuccess("OTP has  macthed")
-        naviget("/creataccount")
+        setLoder(false)
         setSendValue("")
+        console.log(emailV)
+        naviget("/creataccount")
 
     }
 
@@ -69,7 +80,7 @@ const EmailVerify = ({checkR}) => {
                             type={pageShow ? `email` : `text`}
                             placeholder={`Enter your ${pageShow ? `Email` : `otp`}`}
                             value={sendValue}
-                            onChange={(e)=>setSendValue(e.target.value)}
+                            onChange={(e) => setSendValue(e.target.value)}
                             required
                         />
 
@@ -78,7 +89,7 @@ const EmailVerify = ({checkR}) => {
 
                 <div className="flex items-center justify-center">
                     <div className="relative group">
-                        <button
+                        {loder?<div class="loader"></div>:<button
                             type='submit'
                             className="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl shadow-emerald-900 transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-emerald-600"
                         >
@@ -102,7 +113,8 @@ const EmailVerify = ({checkR}) => {
                                     </svg>
                                 </div>
                             </span>
-                        </button>
+                        </button>}
+                       
                     </div>
                 </div>
             </form>

@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from 'react'
 export const EmailContext = createContext()
 
 const EmailContextProvider = ({ children }) => {
-    const [emailV, setEmailV] = useState(false)
+    const [emailV, setEmailV] = useState("")
     return (
         <EmailContext.Provider value={[emailV, setEmailV]}>
             {children}

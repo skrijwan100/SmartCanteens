@@ -1,6 +1,7 @@
 import React from 'react'
-import gif from "../assets/gifs/Animation - 1744913560754.gif"
+
 export default function Createaccount() {
+  const [emailV, setEmailV] = useEmail()
   return (
     <div>
       <input className='text-black' type="email" value={"skrijwan"} readOnly />

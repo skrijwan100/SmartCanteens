@@ -96,7 +96,7 @@ router.post("/login", async (req, res) => {
     }
 
 })
-router.get("getuser", fecthuer, async (req, res) => {
+router.get("/getuser", fecthuer, async (req, res) => {
     try {
         const userid = req.user;
         const userdata = await User.findById(userid)

@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { handleSuccess, handleError } from './ErrorMessage'
 import { useNavigate } from 'react-router'
-
+import { useEmail } from '../contexts/emailContext'
 const EmailVerify = ({ checkR }) => {
     const [pageShow, setpageShow] = checkR
     const [sendValue, setSendValue] = useState("")
     const [loder, setLoder] = useState(false)
-    const naviget = useNavigate()
+    const naviget = useNavigate();
+    const [emailV, setEmailV] = useEmail()
     const submitEmail = async (e) => {
         e.preventDefault();
         setLoder(true)
         console.log(sendValue)
+       
         const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/sendemail`
         const responce = await fetch(url, {
             method: 'POST',
@@ -28,11 +30,13 @@ const EmailVerify = ({ checkR }) => {
         setpageShow(false)
         setLoder(false)
         setSendValue("")
+        setEmailV(sendValue)
     }
 
     const submitOtp = async (e) => {
         e.preventDefault();
         console.log(sendValue)
+        
         setLoder(true)
         const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/veryfiyotp`
         const responce = await fetch(url, {
@@ -47,9 +51,10 @@ const EmailVerify = ({ checkR }) => {
             return handleError("OTP has not macthed")
         }
         handleSuccess("OTP has  macthed")
-        naviget("/creataccount")
         setLoder(false)
         setSendValue("")
+        console.log(emailV)
+        naviget("/creataccount")
 
     }
 

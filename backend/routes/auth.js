@@ -43,8 +43,7 @@ router.post("/veryfiyotp", async (req, res) => {
 })
 router.post("/register", upload.single("profilepic"), async (req, res) => {
     try {
-        const { name, email, address, password } = JSON.parse(req.body.userDetails);
-        console.log(name, email, password)
+        const { name, email, address, password } = JSON.parse(req.body.userDetails)
         if (!req.file) {
             return res.status(400).json({ error: "No file uploaded" });
         }

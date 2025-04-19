@@ -11,7 +11,7 @@ const EmailVerify = ({ checkR }) => {
     const submitEmail = async (e) => {
         e.preventDefault();
         setLoder(true)
-        console.log(sendValue)
+        
        
         const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/sendemail`
         const responce = await fetch(url, {
@@ -35,7 +35,7 @@ const EmailVerify = ({ checkR }) => {
 
     const submitOtp = async (e) => {
         e.preventDefault();
-        console.log(sendValue)
+        
         
         setLoder(true)
         const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/veryfiyotp`
@@ -53,8 +53,7 @@ const EmailVerify = ({ checkR }) => {
         handleSuccess("OTP has  macthed")
         setLoder(false)
         setSendValue("")
-        console.log(emailV)
-        naviget("/creataccount")
+              naviget("/creataccount")
 
     }
 
@@ -89,7 +88,7 @@ const EmailVerify = ({ checkR }) => {
 
                 <div className="flex items-center justify-center">
                     <div className="relative group">
-                        {loder?<div class="loader"></div>:<button
+                        <button
                             type='submit'
                             className="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl shadow-emerald-900 transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-emerald-600"
                         >
@@ -98,7 +97,7 @@ const EmailVerify = ({ checkR }) => {
                             ></span>
                             <span className="relative z-10 block px-6 py-3 rounded-2xl bg-neutral-950">
                                 <div className="relative z-10 flex items-center space-x-3">
-                                    <span
+                                   {loder?<div class="loader mr-[14px]"></div>:<div className='flex'><span
                                         className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300"
                                     >{pageShow ? `Send OTP` : `Verify the OTP`}</span>
                                     <svg
@@ -110,10 +109,10 @@ const EmailVerify = ({ checkR }) => {
                                         <path
                                             d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
                                         ></path>
-                                    </svg>
+                                    </svg></div>}
                                 </div>
                             </span>
-                        </button>}
+                        </button>
                        
                     </div>
                 </div>

@@ -6,7 +6,7 @@ export default function Createaccount() {
   return (
     <div>
       <input className='text-black' type="email" value={emailV} readOnly />
-      <img src={gif} alt="" />
+      {/* <img src={gif} alt="" /> */}
     </div>
   )
 }

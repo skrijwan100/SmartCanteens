@@ -10,7 +10,6 @@ const Signup = () => {
       <div className='hidden xl:flex w-[40%]'>
         <img src={gifnew} alt="" />
       </div>
-      <p>kjdsckhj</p>
     </div>
   )
 }

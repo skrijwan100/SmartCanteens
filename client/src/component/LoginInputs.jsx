@@ -1,14 +1,38 @@
 import React from 'react';
-
+import { Link } from 'react-router';
+import { handleSuccess, handleError } from './ErrorMessage'
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 const LoginInputs = () => {
-    const handleSubmit = (e) => {
+    const [loder, setLoder] = useState(false)
+    const naviget=useNavigate()
+    const handleSubmit = async(e) => {
         e.preventDefault();
-
+        setLoder(true)
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-
         console.log("Form Data:", data);
-        e.target.reset();
+        const url=`${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/login`
+        const responce= await fetch(url,{
+            method:'POST',
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify({email:data.email,password:data.password})
+        })
+        const resdata= await responce.json()
+        console.log(resdata);
+        if(!resdata.status){
+            setLoder(false)
+          return handleError('Email or passowrd is wrong')
+        }
+        localStorage.setItem('auth-token',resdata.token)
+        setLoder(false)
+        naviget("/")
+        setTimeout(()=>{
+            location.reload()
+        },1000)
+        return handleSuccess('Login Successful')
     };
 
     return (
@@ -65,7 +89,7 @@ const LoginInputs = () => {
                             <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-600 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                             <span className="relative z-10 block px-6 py-3 rounded-2xl bg-neutral-950">
                                 <div className="relative z-10 flex items-center space-x-3">
-                                    <span className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300">
+                                    {loder?<div className="loader mr-[14px]"></div>:<div className='flex'><span className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300">
                                         Submit
                                     </span>
                                     <svg
@@ -75,7 +99,7 @@ const LoginInputs = () => {
                                         className="w-7 h-7 transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300"
                                     >
                                         <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" />
-                                    </svg>
+                                    </svg></div>}
                                 </div>
                             </span>
                         </button>
@@ -83,7 +107,7 @@ const LoginInputs = () => {
                 </div>
             </form>
 
-            <h1>Don't have an account? <span className='text-blue-500'>Sign up</span></h1>
+            <h1>Don't have an account?<Link to='/signup'> <span className='text-blue-500'>Sign up</span></Link></h1>
         </div>
     );
 };

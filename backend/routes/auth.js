@@ -88,7 +88,7 @@ router.post("/login", async (req, res) => {
         const authtoken = jwt.sign({
             user: finduser._id
         }, process.env.JWT_SERECT)
-        return res.status(200).json({ "status": true, "message": "login Successful", "auth-token": authtoken })
+        return res.status(200).json({ "status": true, "message": "login Successful", "token": authtoken })
     } catch (error) {
         console.log(error)
         return res.status(505).json({ "error": "Internal server error" })
@@ -98,7 +98,7 @@ router.post("/login", async (req, res) => {
 router.get("/getuser", fecthuer, async (req, res) => {
     try {
         const userid = req.user;
-        const userdata = await User.findById(userid)
+        const userdata = await User.findById(userid).select("-password");
         return res.status(200).json({ "message": userdata })
     } catch (error) {
         console.log(error)

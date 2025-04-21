@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { handleSuccess, handleError } from './ErrorMessage'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useEmail } from '../contexts/emailContext'
 const EmailVerify = ({ checkR }) => {
     const [pageShow, setpageShow] = checkR
@@ -118,7 +118,7 @@ const EmailVerify = ({ checkR }) => {
                 </div>
             </form>
 
-            <h1>Already have an account? <span className='text-blue-500'>Login</span></h1>
+            <h1>Already have an account? <Link to='/login'><span className='text-blue-500'>Login</span></Link></h1>
         </div>
     )
 }

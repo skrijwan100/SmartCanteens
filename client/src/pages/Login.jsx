@@ -1,15 +1,14 @@
 import React from 'react'
-import EmailVerify from '../component/EmailVerify'
-import gifnew from "../assets/gifs/gifnew.gif"
+import gifnew from "../assets/gifs/logif.gif"
 import LoginInputs from '../component/LoginInputs'
 
 const Login = () => {
   
   return (
-    <div className='w-full heightContainer flex items-center justify-center'>
+    <div className='w-full heightContainer flex items-center justify-evenly'>
       <LoginInputs />
       <div className='hidden xl:flex w-[40%]'>
-        <img src={gifnew} alt="" />
+        <img  className='h-[300px]' src={gifnew} alt="" />
       </div>
     </div>
   )

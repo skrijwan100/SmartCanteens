@@ -7,7 +7,7 @@ const Signup = () => {
   return (
     <div className='w-full heightContainer flex items-center justify-center'>
       <EmailVerify checkR={[pageShow, setpageShow]}/>
-      <div className=' w-[40%]'>
+      <div className='hidden xl:flex w-[40%]'>
         <img src={gifnew} alt="" />
       </div>
     </div>

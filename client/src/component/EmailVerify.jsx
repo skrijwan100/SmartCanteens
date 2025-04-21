@@ -24,7 +24,7 @@ const EmailVerify = ({ checkR }) => {
         const data = await responce.json();
         if (!data.status) {
             setLoder(false)
-            return handleError("Error to send mail please try again.")
+            return handleError("You already have a account")
         }
         handleSuccess("OTP send to your email")
         setpageShow(false)

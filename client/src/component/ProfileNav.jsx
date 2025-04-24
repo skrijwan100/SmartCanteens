@@ -78,7 +78,7 @@ const ProfileNav = () => {
                 <>
                     <div className='flex items-center justify-center gap-4'>
                         <Link to="/login" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 cursor-pointer">Login</Link>
-                        <Link to="/signup" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 cursor-pointer">Sign up</Link>
+                        <Link to="/signup" className="text-white bg-[#4e5cf7] hover:bg-[#3342ec] focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 dark:[#4e5cf7] dark:hover:[#4e5cf7] cursor-pointer">Sign up</Link>
                     </div>
                 </>}
         </div>

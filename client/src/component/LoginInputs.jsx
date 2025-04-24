@@ -36,7 +36,7 @@ const LoginInputs = () => {
     };
 
     return (
-        <div className='flex items-center justify-center flex-col h-[70vh] w-[30%]'>
+        <div className='flex items-center justify-center flex-col h-[70vh] w-[100%] xl:w-[30%]'>
             <h1 className='text-5xl text-left mb-[5rem]'>Login</h1>
             <form
                 onSubmit={handleSubmit}

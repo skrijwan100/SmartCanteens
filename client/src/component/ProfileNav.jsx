@@ -4,37 +4,37 @@ import { Link } from 'react-router-dom'
 
 const ProfileNav = () => {
     const [isLogin, setIsLogin] = useState(false)
-    const [userdelites,setuserdelites]=useState()
-    const [pic,setpic]=useState(false)
-    const [isAuthenticated,setisAuthenticated]=useState(null)
-    useEffect(()=>{
-       const authtoken= localStorage.getItem('auth-token')
-       setisAuthenticated(authtoken)
-        const getuser=async()=>{
-           const url=`${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/getuser`
-           const token=localStorage.getItem('auth-token')
-           const responce= await fetch(url,{
-            method:'GET',
-            headers:{
-                "Content-Type": "application/json",
-                "auth-token":token
-            }
-           })
-           const userdata=await responce.json()
-           console.log(userdata)
-           setuserdelites(userdata)
-           console.log(userdata.message.profilepic)
-           setpic(true)
-       }
-       if(authtoken){
-           setIsLogin(true)
-           getuser()
-       }
-    },[])
+    const [userdelites, setuserdelites] = useState()
+    const [pic, setpic] = useState(false)
+    const [isAuthenticated, setisAuthenticated] = useState(null)
+    useEffect(() => {
+        const authtoken = localStorage.getItem('auth-token')
+        setisAuthenticated(authtoken)
+        const getuser = async () => {
+            const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/getuser`
+            const token = localStorage.getItem('auth-token')
+            const responce = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": token
+                }
+            })
+            const userdata = await responce.json()
+            console.log(userdata)
+            setuserdelites(userdata)
+            console.log(userdata.message.profilepic)
+            setpic(true)
+        }
+        if (authtoken) {
+            setIsLogin(true)
+            getuser()
+        }
+    }, [])
     // getuser()
-    
 
-    const handlelogout=()=>{
+
+    const handlelogout = () => {
         localStorage.removeItem('auth-token');
         location.reload()
     }
@@ -44,13 +44,13 @@ const ProfileNav = () => {
             {isLogin && isAuthenticated ? <>
                 <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <span className="sr-only">Open user menu</span>
-                    {pic&&userdelites?<img className="w-12 h-12 object-cover rounded-full cursor-pointer" src={userdelites.message.profilepic} alt="user photo" />:<img className="w-16 h-16 object-cover rounded-full" src={friend} alt="user photo" />}
+                    {pic && userdelites ? <img className="w-12 h-12 object-cover rounded-full cursor-pointer" src={userdelites.message.profilepic} alt="user photo" /> : <img className="w-16 h-16 object-cover rounded-full" src={friend} alt="user photo" />}
                 </button>
 
                 <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                     <div className="px-4 py-3">
-                        {pic&&<span className="block text-sm text-gray-900 dark:text-white">{userdelites.message.name}</span>}
-                        {pic&&<span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{userdelites.message.email}</span>}
+                        {pic && <span className="block text-sm text-gray-900 dark:text-white">{userdelites.message.name}</span>}
+                        {pic && <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{userdelites.message.email}</span>}
                     </div>
                     <ul className="py-2" aria-labelledby="user-menu-button">
                         <li>

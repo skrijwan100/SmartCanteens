@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import EmailVerify from '../component/EmailVerify'
-import gifnew from "../assets/gifs/gifnew.gif"
+import gifnew from "../assets/gifs/otpDark.gif"
 
 const Signup = () => {
   const [pageShow, setpageShow] = useState(true)

@@ -1,13 +1,12 @@
 import React from 'react'
 import Register from '../component/Register'
-import gifnew from "../assets/gifs/registriongif.gif"
+import gifnew from "../assets/gifs/register.gif"
 export default function Createaccount() {
   return (
-    <div>
-      <div className='w-full  flex items-center  justify-evenly'>
-
-        <Register />
-        <img className='h-[440px] mb-[55px] ' src={gifnew} alt="" />
+    <div className='w-full heightContainer flex items-center justify-center gap-[4rem]'>
+      <Register />
+      <div className='hidden xl:flex '>
+        <img src={gifnew} alt="" />
       </div>
     </div>
   )

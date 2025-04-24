@@ -58,7 +58,7 @@ const EmailVerify = ({ checkR }) => {
     }
 
     return (
-        <div className='flex items-center justify-center flex-col h-[70vh] w-[30%]'>
+        <div className='flex items-center justify-center flex-col h-[70vh] w-[100%] xl:w-[30%]'>
             <h1 className='text-5xl text-left mb-[5rem]'>Sign up</h1>
             <form className='flex flex-col items-center justify-center gap-4 mb-[3rem]' onSubmit={pageShow ? submitEmail : submitOtp}>
                 <div id="search-container">

@@ -56,7 +56,7 @@ export default function Register() {
     }
     return (
         <div>
-            <div className='flex items-center justify-center'><h1 className='text-5xl mt-1.5 mb-[2rem]'>Register</h1></div>
+            <div className='flex items-center justify-center'><h1 className='text-5xl mt-4 mb-[2rem]'>Register</h1></div>
             <form onSubmit={handleuserdata} className='flex flex-col items-center justify-center gap-4 mb-[3rem]'>
                 <div id="search-container">
                     <div className="nebula"></div>

@@ -720,3 +720,7 @@ body {
     left: 20px;
     top: 15px;
 }
+
+[aria-current="page"]{
+    color: #2b7fff;
+}

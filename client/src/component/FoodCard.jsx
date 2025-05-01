@@ -6,7 +6,7 @@ const FoodCard = ({item}) => {
     return (
 
 
-        <Link to={`/jfksjfkjgkjs`} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <Link to={`/${item._id}`} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img className="rounded-t-lg" src={item.foodpic} alt="" />
             </a>

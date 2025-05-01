@@ -18,6 +18,9 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/api/v1/userauth",require("./routes/auth"));
+app.use("/api/v2/foodwork",require("./routes/food"));
+app.use("/api/v3/userorder",require("./routes/order"))
+
 
 app.listen(process.env.PORT,()=>{
     console.log(`the app is run in ${process.env.PORT} port `)

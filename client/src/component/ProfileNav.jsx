@@ -31,7 +31,7 @@ const ProfileNav = () => {
             getuser()
         }
     }, [])
-    // getuser()
+
 
 
     const handlelogout = () => {

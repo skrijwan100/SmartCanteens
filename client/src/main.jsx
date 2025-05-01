@@ -11,6 +11,7 @@ import Createaccount from './pages/Createaccount.jsx';
 import EmailContextProvider from './contexts/emailContext.jsx';
 import Addfood from './pages/Addfood.jsx';
 import ShowPage from './pages/ShowPage.jsx';
+import ShowOrder from './pages/ShowOrder.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,12 @@ const router = createBrowserRouter([
         path : "/:id",
         element : (
           <ShowPage/>
+        )
+      },
+      {
+        path : "/allOrder",
+        element : (
+          <ShowOrder/>
         )
       }
     ]

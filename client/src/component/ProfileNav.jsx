@@ -44,7 +44,7 @@ const ProfileNav = () => {
             {isLogin && isAuthenticated ? <>
                 <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <span className="sr-only">Open user menu</span>
-                    {pic && userdelites ? <img className="w-9 h-9 object-cover rounded-full cursor-pointer" src={userdelites.message.profilepic} alt="user photo" /> : <img className="w-16 h-16 object-cover rounded-full" src={friend} alt="user photo" />}
+                    {pic && userdelites ? <img className="w-9 h-9 object-cover rounded-full cursor-pointer" src={userdelites.message.profilepic} alt="user photo" /> : <img className="w-9 h-9 object-cover rounded-full" src={friend} alt="user photo" />}
                 </button>
 
                 <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">

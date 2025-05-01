@@ -5,7 +5,7 @@ import LoginInputs from '../component/LoginInputs'
 const Login = () => {
   
   return (
-    <div className='w-full h-[83vh] flex items-center justify-center'>
+    <div className='w-full h-[85vh] flex items-center justify-center'>
       <LoginInputs />
       <div className='hidden xl:flex w-[40%]'>
         <img src={gifnew} alt="" />

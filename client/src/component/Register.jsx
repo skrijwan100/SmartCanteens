@@ -174,7 +174,7 @@ export default function Register() {
                     </div>
                 </div>
 
-                <div className="relative w-full h-16 rounded-md mb-1 overflow-hidden cursor-pointer bg-opacity-80 bg-blue-950 shadow-md shadow-blue-500">
+                <div className="relative w-full h-[3.3rem] rounded-md mb-1 overflow-hidden cursor-pointer bg-opacity-80 bg-blue-950 shadow-md shadow-blue-500">
                     <input
                         type="file"
                         className="absolute inset-0 opacity-0 cursor-pointer z-10"

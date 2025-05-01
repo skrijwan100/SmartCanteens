@@ -9,7 +9,11 @@ import Signup from './pages/Signup.jsx';
 import About from './pages/About.jsx';
 import Createaccount from './pages/Createaccount.jsx';
 import EmailContextProvider from './contexts/emailContext.jsx';
+<<<<<<< HEAD
 import Addfood from './pages/Addfood.jsx';
+=======
+import ShowPage from './pages/ShowPage.jsx';
+>>>>>>> e0d08a99fb47fd3833fe4da9418c9575a3c84373
 
 const router = createBrowserRouter([
   {
@@ -48,11 +52,19 @@ const router = createBrowserRouter([
         )
       },
       {
+<<<<<<< HEAD
         path: '/addfooditeam',
         element: (
           <Addfood />
         )
       },
+=======
+        path : "/:id",
+        element : (
+          <ShowPage/>
+        )
+      }
+>>>>>>> e0d08a99fb47fd3833fe4da9418c9575a3c84373
     ]
   }
 

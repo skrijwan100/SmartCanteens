@@ -23,7 +23,7 @@ router.post("/addfood",upload.single("profilepic"),async(req,res)=>{
 
     const newproducts = new Food({
         foodname,
-        imgurl,
+        foodpic:imgurl,
         fooddisc,
         foodstock,
         foodprize,

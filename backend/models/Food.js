@@ -1,6 +1,6 @@
 const mongoose= require('mongoose')
 const {Schema}=mongoose;
-const user= new Schema({
+const food= new Schema({
     foodname:{
         type:String,
         require:true,
@@ -16,5 +16,11 @@ const user= new Schema({
         type:Number,
         require:true
     },
+    foodprize:{
+        type:Number,
+        require:true,
+    }
     
 },{ timestamps: true })
+
+module.exports=mongoose.model("Food",food)

@@ -7,7 +7,6 @@ import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import About from './pages/About.jsx';
-import Contact from './pages/Contact.jsx';
 import Createaccount from './pages/Createaccount.jsx';
 import EmailContextProvider from './contexts/emailContext.jsx';
 
@@ -39,12 +38,6 @@ const router = createBrowserRouter([
         path: '/about',
         element: (
           <About />
-        )
-      },
-      {
-        path: '/contact',
-        element: (
-          <Contact />
         )
       },
       {

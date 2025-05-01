@@ -9,6 +9,7 @@ import Signup from './pages/Signup.jsx';
 import About from './pages/About.jsx';
 import Createaccount from './pages/Createaccount.jsx';
 import EmailContextProvider from './contexts/emailContext.jsx';
+import Addfood from './pages/Addfood.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,12 @@ const router = createBrowserRouter([
         path: '/creataccount',
         element: (
           <Createaccount />
+        )
+      },
+      {
+        path: '/addfooditeam',
+        element: (
+          <Addfood />
         )
       },
     ]

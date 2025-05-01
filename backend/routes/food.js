@@ -7,7 +7,7 @@ const cloudinary = require("../config/cloudinary");
 const fs = require("fs")
 
 
-router.post("/addfood",fecthadmin,upload.single("profilepic"),async(req,res)=>{
+router.post("/addfood",upload.single("profilepic"),async(req,res)=>{
     try {
         
 
@@ -21,7 +21,7 @@ router.post("/addfood",fecthadmin,upload.single("profilepic"),async(req,res)=>{
             fs.unlinkSync(req.file.path);
             const imgurl = cloudinaryResponse.secure_url;
 
-    const newproducts = await Products({
+    const newproducts = new Food({
         foodname,
         imgurl,
         fooddisc,

@@ -48,7 +48,7 @@ const LoginInputs = () => {
                     <div className="darkBorderBg"></div>
                     <div className="darkBorderBg"></div>
                     <div className="white"></div>
-                    <div className="border"></div>
+                    <div className="borderInput"></div>
                     <div id="main">
                         <input
                             placeholder="Enter your email"
@@ -67,7 +67,7 @@ const LoginInputs = () => {
                     <div className="darkBorderBg"></div>
                     <div className="darkBorderBg"></div>
                     <div className="white"></div>
-                    <div className="border"></div>
+                    <div className="borderInput"></div>
                     <div id="main">
                         <input
                             placeholder="Enter your password"

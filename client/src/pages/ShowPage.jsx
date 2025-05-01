@@ -10,7 +10,7 @@ const ShowPage = () => {
     }
     const [quantity, setQuantity] = useState(0)
     const sendPriceALl = () =>{
-        
+
     }
     return (
         <div className='w-full min-h-[85vh] flex items-center p-10 justify-center'>
@@ -22,6 +22,7 @@ const ShowPage = () => {
                 </div>
                 <div className='w-full '>
                     <img src={tea} alt="" />
+                    
                 </div>
             </div>
             <div className='w-[40%] min-h-[20rem] p-[3rem] flex items-start justify-start flex-col rounded-2xl gap-4 bg-gray-900'>

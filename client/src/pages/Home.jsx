@@ -21,7 +21,7 @@ const Home = () => {
       });
 
       const data = await res.json();
-      console.log(data.allfood);
+      // console.log(data.allfood);
       setFoodItems(data.allfood)
     }
     fecthfood();

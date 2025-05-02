@@ -79,11 +79,11 @@ router.post("/login", async (req, res) => {
         const { email, password } = req.body;
         const finduser = await User.findOne({ email })
         if (!finduser) {
-            return res.status(404).json({ "status": false, "message": "Email or passowrd is wrong" })
+            return res.status(404).json({"status": false, "message": "Email is wrong" })
         }
         const chake_pass = await bcrypt.compare(password, finduser.password)
         if (!chake_pass) {
-            return res.status(400).json({ "status": false, "message": "Email or passowrd is wrong" })
+            return res.status(400).json({ "status": false, "message": " passowrd is wrong" })
         }
         const authtoken = jwt.sign({
             user: finduser._id

@@ -14,7 +14,7 @@ const coresoption = {
 }
 app.use(cors(coresoption));
 app.get("/",(req,res)=>{
-    res.status(200).json({"message":"code run"})
+   return res.status(200).json({"message":"code run"})
 })
 
 app.use("/api/v1/userauth",require("./routes/auth"));

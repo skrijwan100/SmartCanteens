@@ -8,7 +8,7 @@ No more long queues or confusion—SmartCanteen makes food ordering fast, simple
 
 ## 📱 Platforms
 
-- 🌐 **Web App** – Accessible on any browser
+- 🌐 **Web App** – https://smart-canteens.vercel.app/
 - 🤖 **Android App (APK)** – Smooth and optimized for mobile ordering
 
 ---
@@ -45,8 +45,11 @@ No more long queues or confusion—SmartCanteen makes food ordering fast, simple
 
 ## 🔧 Installation Guide
 
-### 📁 Clone the Repository
+### 📁 Frok the repo and  Clone the Repository 
 
 ```bash
 git clone https://github.com/skrijwan100/SmartCanteens.git
 cd SmartCanteens
+npm i
+```
+### For backend 'npx nodemon' and for client 'npm run dev'

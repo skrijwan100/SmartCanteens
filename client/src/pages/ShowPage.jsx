@@ -46,10 +46,10 @@ const ShowPage = () => {
         window.location.href="https://razorpay.me/@ak4sh"
     }
     return (food && show?
-        <div className='w-full min-h-[85vh] flex items-center p-10 justify-center'>
-            <div className='w-[40%] h-[30rem] flex items-center justify-start flex-col gap-4'>
-                <div className='w-full h-[5rem] flex items-center justify-start gap-4'>
-                    <div onClick={backFun} className="p-2 ms-2 w-[5rem] flex items-center justify-center gap-2 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        <div className='w-full min-h-[85vh] items-center xl:p-10 p-4 justify-center gap-6 xl:flex'>
+            <div className='xl:w-[40%] w-full xl:h-[30rem] flex items-center justify-start flex-col gap-4 mb-4 xl:mb-0'>
+                <div className='w-full xl:h-[5rem] flex items-center justify-start gap-0'>
+                    <div onClick={backFun} className="p-2 xl:ms-2 w-[5rem] flex items-center justify-center gap-2 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                         <FaArrowLeft />  back
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const ShowPage = () => {
                     
                 </div>
             </div>
-            <div className='w-[40%] min-h-[20rem] p-[3rem] flex items-start justify-start flex-col rounded-2xl gap-4 bg-gray-900'>
+            <div className='xl:w-[40%] w-full min-h-[20rem] p-[3rem] flex items-start justify-start flex-col rounded-2xl gap-4 bg-gray-900'>
                 <h1 className='text-4xl'>{food.foodname}</h1>
                 <div className='overflow-hidden flex items-center justify-start gap-2'>
                     <span className="bg-green-100 flex items-center justify-center gap-1 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300"><TiStar />2</span>

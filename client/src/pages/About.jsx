@@ -42,7 +42,7 @@ const About = () => {
   ]
 
   return (
-    <div className='w-full min-h-[85vh] flex items-center justify-start flex-col gap-4 p-[2rem]'>
+    <div className='w-full min-h-[85vh] flex items-center justify-start flex-col gap-4 xl:p-[2rem] p-4'>
       <div className='w-full min-h-[10rem] flex items-center justify-center flex-wrap gap-4'>
         <div className='w-[40rem] relative h-[20rem] rounded-[10px] flex items-start justify-start bg-amber-200 overflow-hidden boxShadow border border-gray-900'>
           <img src={canteen} alt="" className='w-full h-full object-cover' />

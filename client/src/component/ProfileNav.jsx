@@ -21,9 +21,9 @@ const ProfileNav = () => {
                 }
             })
             const userdata = await responce.json()
-            console.log(userdata)
+            // console.log(userdata)
             setuserdelites(userdata)
-            console.log(userdata.message.profilepic)
+            // console.log(userdata.message.profilepic)
             setpic(true)
         }
         if (authtoken) {

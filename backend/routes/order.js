@@ -7,8 +7,38 @@ const fecthuser = require("../middleware/fecthuser")
 const upload = require("../middleware/upload")
 const cloudinary = require("../config/cloudinary");
 const fs = require("fs")
+const Razorpay = require('razorpay');
+const razorpay=new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+})
 
-router.post("/addorder", fecthuser, async (res, req) => {
+router.post("/create-order", async (req, res) => {
+    try {
+      const { amount, currency = 'INR', receipt = 'receipt#1' } = req.body;
+      console.log(amount);
+  
+      const options = {
+        amount: amount * 100, // Razorpay expects amount in paise
+        currency,
+        receipt,
+      };
+  
+      const order = await razorpay.orders.create(options);
+      res.json({
+        status: true,
+        orderId: order.id,
+        amount: order.amount,
+        currency: order.currency,
+      });
+  
+    } catch (error) {
+      console.error('Order creation failed:', error);
+      res.status(500).json({ status: false, error: 'Failed to create order' });
+    }
+  });
+
+router.post("/addorder", fecthuser, async (req, res) => {
     try {
         const { orderfood, quantity } = req.body;
         let productfind = await Food.findOne({ pname: products })
@@ -29,6 +59,7 @@ router.post("/addorder", fecthuser, async (res, req) => {
         res.status(500).json({ "message": "intarnal server error." })
     }
 })
+
 router.post("/fecthorder", fecthuser, async (req, res) => {
     try {
         let oneorder = await Order.findOne({ user: req.user })

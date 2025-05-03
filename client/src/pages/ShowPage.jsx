@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { BsGlobe2 } from 'react-icons/bs'
 import { FaArrowLeft } from 'react-icons/fa'
-import tea from "../assets/images/tea.jpg"
 import { TiStar } from "react-icons/ti";
 import { useParams } from 'react-router';
-
+import axios from 'axios'
 const ShowPage = () => {
     const { id } = useParams();
     const [food,setFood] = useState(null);
@@ -32,18 +30,15 @@ const ShowPage = () => {
         window.history.back()
     }
     const [quantity, setQuantity] = useState(0)
-    const pymenturl =async (e) =>{
-    //     e.preventDefault()
-    //    const url=`${import.meta.env.VITE_BACKEND_URL}/api/v2/foodwork/pyment`
-    //    const res= await fetch(url,{
-    //     method:'POST',
-    //     headers:{
-    //         "Content-Type": "application/json",
-    //         "auth-token": localStorage.getItem("auth-token")
-    //     },
-    // })
-    // const data= await res.json()
-        window.location.href="https://razorpay.me/@ak4sh"
+    const handlepyment =async (e) =>{
+        const totalamount= quantity * food.foodprize
+        console.log(totalamount)
+        const url=`${import.meta.env.VITE_BACKEND_URL}/api/v3/userorder/create-order`
+        const response= await axios.post(url,{
+            amount:totalamount,
+        })
+        const { orderId, amount, currency } = response.data;
+        console.log(orderId,amount,currency)
     }
     return (food && show?
         <div className='w-full min-h-[85vh] items-center xl:p-10 p-4 justify-center gap-6 xl:flex'>
@@ -75,7 +70,7 @@ const ShowPage = () => {
                     }} type="text" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
                 <div>
-                    <button onClick={pymenturl} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 cursor-pointer">Buy Now</button>
+                    <button onClick={handlepyment} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 cursor-pointer">Buy Now</button>
                 </div>
             </div>
         </div>:<div className='h-[84vh] flex justify-center items-center'><div class="loadermain"></div></div>

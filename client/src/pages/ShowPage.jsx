@@ -75,7 +75,7 @@ const ShowPage = () => {
                     const data= await res.json()
                     console.log(data)
                     if(data.status){
-                        naviget('/allOrder')
+                        naviget('/userorder')
                     }
                 }
                 // You can verify payment here by sending info to the backend

@@ -12,6 +12,7 @@ import EmailContextProvider from './contexts/emailContext.jsx';
 import Addfood from './pages/Addfood.jsx';
 import ShowPage from './pages/ShowPage.jsx';
 import ShowOrder from './pages/ShowOrder.jsx';
+import ShowUserOrder from './pages/ShowUserOrder.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +65,12 @@ const router = createBrowserRouter([
         path : "/allOrder",
         element : (
           <ShowOrder/>
+        )
+      },
+      {
+        path:"/userorder",
+        element:(
+          <ShowUserOrder/>
         )
       }
     ]

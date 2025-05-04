@@ -8,6 +8,7 @@ const upload = require("../middleware/upload")
 const cloudinary = require("../config/cloudinary");
 const fs = require("fs")
 const Razorpay = require('razorpay');
+const crypto = require('crypto');
 const razorpay=new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -38,22 +39,38 @@ router.post("/create-order", async (req, res) => {
     }
   });
 
+
+  router.post('/verify-payment', (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+  
+    const secret = process.env.RAZORPAY_KEY_SECRET;
+  
+    // Generate expected signature
+    const generated_signature = crypto
+      .createHmac('sha256', secret)
+      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+      .digest('hex');
+  
+    if (generated_signature === razorpay_signature) {
+      // Signature is valid
+      res.json({ status: true, message: 'Payment verified successfully' });
+    } else {
+      // Signature mismatch
+      res.status(400).json({ status: false, message: 'Invalid signature' });
+    }
+  });
+
 router.post("/addorder", fecthuser, async (req, res) => {
     try {
-        const { orderfood, quantity } = req.body;
-        let productfind = await Food.findOne({ pname: products })
-        if (!productfind) {
-            return res.status(404).json({ "message": "Product NOT FOUND", "status": false });
-        }
-        let totalAmount = 0;
-        totalAmount += quantity * Number.parseInt(productfind.ppize)
-        console.log(totalAmount)
+        const { foodname, quantity, totalAmount } = req.body;
         const neworder = await Order({
-            orderfood,
+            orderfood:foodname,
             totalAmount,
             quantity,
             user: req.user
         })
+        neworder.save();
+        return res.status(200).json({status:true,neworder})
     } catch (error) {
         console.log(error)
         res.status(500).json({ "message": "intarnal server error." })

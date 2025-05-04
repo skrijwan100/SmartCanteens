@@ -6,8 +6,6 @@ const upload = require("../middleware/upload")
 const cloudinary = require("../config/cloudinary");
 const fs = require("fs");
 const fecthuer = require('../middleware/fecthuser');
-const axios = require('axios');
-const crypto = require('crypto');
 const querystring = require('querystring');
 
 router.post("/addfood",upload.single("profilepic"),async(req,res)=>{

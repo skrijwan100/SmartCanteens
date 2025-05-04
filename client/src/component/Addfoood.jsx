@@ -40,10 +40,13 @@ export default function Addfoood() {
             });
             console.log(responce)
             handleSuccess("food add succesfully")
+            
             return setLoder(false)
         } catch (error) {
             console.log("Upload Error:", error);
             setLoder(false)
+            setFood({foodname:"",fooddisc:"",foodprize:"",foodstock:""})
+            setFileName(null)
             return handleError("Some error happend")
         }
 

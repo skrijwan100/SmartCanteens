@@ -4,7 +4,9 @@ import { TiStar } from "react-icons/ti";
 import { useParams } from 'react-router';
 import axios from 'axios'
 import { handleError, handleSuccess } from '../component/ErrorMessage'
+import { useNavigate } from 'react-router';
 const ShowPage = () => {
+    const naviget=useNavigate()
     const { id } = useParams();
     const [food, setFood] = useState(null);
     const [show, setshow] = useState(false)
@@ -72,6 +74,9 @@ const ShowPage = () => {
                     })
                     const data= await res.json()
                     console.log(data)
+                    if(data.status){
+                        naviget('/allOrder')
+                    }
                 }
                 // You can verify payment here by sending info to the backend
             },

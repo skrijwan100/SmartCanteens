@@ -77,7 +77,7 @@ router.post("/addorder", fecthuser, async (req, res) => {
     }
 })
 
-router.post("/fecthorder", fecthuser, async (req, res) => {
+router.get("/fecthorder", fecthuser, async (req, res) => {
     try {
         let oneorder = await Order.findOne({ user: req.user })
         if (oneorder == null) {
@@ -93,7 +93,7 @@ router.post("/fecthorder", fecthuser, async (req, res) => {
 
 })
 
-router.post("/allorder".fecthadmin, async (req, res) => {
+router.get("/allorder", async (req, res) => {
 
     try {
         let allorder = await Order.find()

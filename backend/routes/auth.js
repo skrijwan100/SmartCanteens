@@ -105,4 +105,12 @@ router.get("/getuser", fecthuer, async (req, res) => {
         return res.status(505).json({ "error": "Internal server error" })
     }
 })
+router.post('/updateuser',fecthuer,async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.log(error)
+        return res.status(505).json({ "error": "Internal server error" })
+    }
+})
 module.exports = router;

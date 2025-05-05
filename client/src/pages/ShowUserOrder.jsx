@@ -24,7 +24,7 @@ export default function ShowUserOrder() {
         fecthallorder()
       }, [])
     return (order && loder? <div className='h-[84vh] flex justify-center items-center'><div class="loadermain"></div></div>:
-        <div className='w-full min-h-[85vh] flex items-start p-10 justify-center bg-gray-900'>
+        <div className='w-full min-h-[90vh] flex items-start p-10 justify-center bg-gray-900'>
           <div className="w-full max-w-4xl overflow-hidden shadow-lg rounded-lg border border-gray-700">
             <div className="bg-gray-800 p-6">
               <h2 className="text-2xl font-bold text-gray-100 mb-4">Order Details</h2>

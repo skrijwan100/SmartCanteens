@@ -38,8 +38,8 @@ No more long queues or confusion—SmartCanteen makes food ordering fast, simple
 - **Database:** MongoDB with Mongoose
 - **Authentication:** JWT-based login
 - **Mobile App:** Android (Java/Kotlin with Android Studio)
-- **Payment Gateway:** UPI / Razorpay Integration (Optional)
-- **Hosting:** Vercel (Web), Firebase/Heroku (Backend), APK (Manual install)
+- **Payment Gateway:** UPI / Razorpay Integration 
+- **Hosting:** Vercel (Web), APK (Manual install)
 
 ---
 

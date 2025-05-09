@@ -36,7 +36,7 @@ No more long queues or confusion—SmartCanteen makes food ordering fast, simple
 - **Frontend:** React.js, HTML5, CSS3
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB with Mongoose
-- **Authentication:** JWT-based login
+- **Authentication:** JWT-based login ,SMTP
 - **Mobile App:** Android (Java/Kotlin with Android Studio)
 - **Payment Gateway:** Razorpay Integration 
 - **Hosting:** Vercel (Web), APK (Manual install)

@@ -32,7 +32,7 @@ const ShowPage = () => {
     const backFun = () => {
         window.history.back()
     }
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
     const handlepyment = async (e) => {
         const totalamount = quantity * food.foodprize
         console.log(totalamount)

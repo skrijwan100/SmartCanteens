@@ -5,7 +5,7 @@ const fecthadmin = require('../middleware/fecthadmin');
 const upload = require("../middleware/upload")
 const cloudinary = require("../config/cloudinary");
 const fs = require("fs");
-const fecthuer = require('../middleware/fecthuser');
+const fecthuer = require('../middleware/fecthuser');    
 const querystring = require('querystring');
 
 router.post("/addfood",upload.single("profilepic"),async(req,res)=>{

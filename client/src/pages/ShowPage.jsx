@@ -90,12 +90,10 @@ const ShowPage = () => {
             },
         }
         try {
-
-
             const rzp = new window.Razorpay(option);
             rzp.open();
         } catch (error) {
-            console.error('Payment Error:', err);
+            console.error('Payment Error:', error);
         }
     }
     return (food && show ?

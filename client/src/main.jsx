@@ -13,6 +13,7 @@ import Addfood from './pages/Addfood.jsx';
 import ShowPage from './pages/ShowPage.jsx';
 import ShowOrder from './pages/ShowOrder.jsx';
 import ShowUserOrder from './pages/ShowUserOrder.jsx';
+import CreateAdmin from './pages/CreateAdmin.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,6 +72,12 @@ const router = createBrowserRouter([
         path:"/userorder",
         element:(
           <ShowUserOrder/>
+        )
+      },
+      {
+        path:"/crateadmin",
+        element:(
+          <CreateAdmin/>
         )
       }
     ]

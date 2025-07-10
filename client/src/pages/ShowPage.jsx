@@ -10,6 +10,8 @@ const ShowPage = () => {
     const { id } = useParams();
     const [food, setFood] = useState(null);
     const [show, setshow] = useState(false)
+    const [loder,setLoder]=useState(false)
+    const [userdelites, setuserdelites] = useState()
     useEffect(() => {
         const fecthproduct = async () => {
             const url = `${import.meta.env.VITE_BACKEND_URL}/api/v2/foodwork/cartfood/${id}`
@@ -27,6 +29,22 @@ const ShowPage = () => {
         }
         fecthproduct()
 
+        const getuser = async () => {
+            const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/userauth/getuser`
+            const token = localStorage.getItem('auth-token')
+            const responce = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": token
+                }
+            })
+            const userdata = await responce.json()
+            // console.log(userdata)
+            setuserdelites(userdata)
+            // console.log(userdata.message.profilepic)
+        }
+        getuser();
 
     }, [])
     const backFun = () => {
@@ -34,6 +52,7 @@ const ShowPage = () => {
     }
     const [quantity, setQuantity] = useState(1)
     const handlepyment = async (e) => {
+        setLoder(true)
         const totalamount = quantity * food.foodprize
         console.log(totalamount)
         const url = `${import.meta.env.VITE_BACKEND_URL}/api/v3/userorder/create-order`
@@ -62,6 +81,7 @@ const ShowPage = () => {
                 });
                 if(res.data.status){
                     handleSuccess('Payment successful !');
+                    setLoder(false)
                     const url=`${import.meta.env.VITE_BACKEND_URL}/api/v3/userorder/addorder`
                     const res= await fetch(url,{
                         method:'POST',
@@ -75,14 +95,15 @@ const ShowPage = () => {
                     const data= await res.json()
                     console.log(data)
                     if(data.status){
+                       
                         naviget('/userorder')
                     }
                 }
                 // You can verify payment here by sending info to the backend
             },
             prefill: {
-                name: 'Test User',
-                email: 'test@example.com',
+                name: `${userdelites.message.name}`,
+                email: `${userdelites.message.email}`,
                 contact: '9999999999',
             },
             theme: {
@@ -93,6 +114,7 @@ const ShowPage = () => {
             const rzp = new window.Razorpay(option);
             rzp.open();
         } catch (error) {
+            setLoder(false)
             console.error('Payment Error:', error);
         }
     }
@@ -126,7 +148,7 @@ const ShowPage = () => {
                     }} type="text" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
                 <div>
-                    <button onClick={handlepyment} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 cursor-pointer">Buy Now</button>
+                    <button onClick={handlepyment} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 cursor-pointer">{loder?<div class="loader mr-[14px]"></div>:'Buy Now'}</button>
                 </div>
             </div>
         </div> : <div className='h-[84vh] flex justify-center items-center'><div class="loadermain"></div></div>
